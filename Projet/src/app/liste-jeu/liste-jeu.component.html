@@ -1,1 +1,5 @@
-<p>liste-jeu works!</p>
+<div class="liste-jeu">
+    <ng-container *ngFor="let unJeu of listeJeu">
+        <app-jeu [Jeu]="unJeu"></app-jeu>
+    </ng-container>
+</div>
