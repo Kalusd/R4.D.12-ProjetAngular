@@ -1,1 +1,12 @@
-<p>jeu works!</p>
+<div class="jeu-card" *ngIf="leJeu">
+    <h3>{{leJeu.titre | uppercase}}</h3>
+    <p>Sortie le : {{leJeu.dateDeSortie | date: 'dd/MM/yyyy'}}</p>
+    <p>Developpeur : {{leJeu.developpeur}}</p>
+    <p>Prix : {{leJeu.prix | currency: 'EUR'}}</p>
+    <p>
+        <span> Quantité : {{leJeu.stockDisponible}} </span>
+    </p>
+    <p *ngIf="idJeu === undefined">
+        <a routerLink="/jeu/{{leJeu.id}}" class="button"><button>Voir le détail</button></a>
+    </p>
+</div>
