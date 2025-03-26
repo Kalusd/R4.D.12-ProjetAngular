@@ -1,1 +1,13 @@
-<p>reservation works!</p>
+<div class="reservation-card" *ngIf="laReservation">
+    <h3>Réservation n°{{laReservation.id}}</h3>
+    <p>Client : {{laReservation.nomClient}}</p>
+    <p>Email client : {{laReservation.emailClient}}</p>
+    <p>Numéro de téléphone client : {{laReservation.numeroTelephone}}</p>
+    <p>Titre du jeu réservé : {{laReservation.titreJeuReservation}}</p>
+    <p>Plateforme : {{laReservation.plateforme}}</p>
+    <p>Date de réservation : {{laReservation.dateDeReservation | date: 'dd/MM/yyyy'}}</p>
+    <p>Statut de la réservation : {{laReservation.statutReservation}}</p>
+    <p *ngIf="idReservation === undefined">
+        <a routerLink="/reservation/{{laReservation.id}}" class="button"><button>Voir le détail</button></a>
+    </p>
+</div>
