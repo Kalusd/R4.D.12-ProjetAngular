@@ -6,12 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { JeuComponent } from './jeu/jeu.component';
 import { ListeJeuComponent } from './liste-jeu/liste-jeu.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     JeuComponent,
-    ListeJeuComponent
+    ListeJeuComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,
