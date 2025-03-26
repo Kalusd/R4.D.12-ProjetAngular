@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { JeuComponent } from './jeu/jeu.component';
 import { ListeJeuComponent } from './liste-jeu/liste-jeu.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { ListeReservationComponent } from './liste-reservation/liste-reservation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     JeuComponent,
     ListeJeuComponent,
-    ReservationComponent
+    ReservationComponent,
+    ListeReservationComponent
   ],
   imports: [
     BrowserModule,
