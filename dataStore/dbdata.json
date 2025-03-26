@@ -19,6 +19,16 @@
             "dateDeSortie": "26 octobre 2018",
             "stockDisponible": 3,
             "prix": 59.99
+        },
+        {
+            "id": 3,
+            "titre": "The Legend of Zelda: Breath of the Wild",
+            "plateforme": ["Switch"],
+            "genre": ["Action", "Aventure"],
+            "developpeur": "Nintendo",
+            "dateDeSortie": "3 mars 2017",
+            "stockDisponible": 5,
+            "prix": 59.99
         }
     ],
 
