@@ -42,7 +42,7 @@
         "titreJeuReservation": "Minecraft",
         "plateforme": "PC",
         "dateDeReservation": "21/02/2025",
-        "statutReservation": "confirmee"
+        "statutReservation": "Confirmée"
         },
         {
         "id": 2,
@@ -53,7 +53,7 @@
         "titreJeuReservation": "Red Dead Redemption 2",
         "plateforme": "PS4",
         "dateDeReservation": "24/03/2025",
-        "statutReservation": "en attente"
+        "statutReservation": "En attente"
         },
         {
         "id": 3,
@@ -64,7 +64,7 @@
         "titreJeuReservation": "Red Dead Redemption 2",
         "plateforme": "Xbox One",
         "dateDeReservation": "24/03/2025",
-        "statutReservation": "annulee"
+        "statutReservation": "Annulée"
         }
     ]
 }
