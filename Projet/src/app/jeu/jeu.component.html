@@ -6,7 +6,36 @@
     <p>
         <span> Quantité : {{leJeu.stockDisponible}} </span>
     </p>
+
+    <!-- Si aucun identifiant n'est donné dans l'url (= on est sur la page du catalogue) -->
     <p *ngIf="idJeu === undefined">
         <a routerLink="/jeu/{{leJeu.id}}" class="button"><button>Voir le détail</button></a>
     </p>
+
+    <!-- Si un identifiant est donné dans l'url (= on est sur la page du jeu) -->
+    <div *ngIf="idJeu !== undefined">
+        <h3>Réservations</h3>
+        <div *ngIf="lesReservations && lesReservations.length > 0">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID Réservation</th>
+                        <th>Client</th>
+                        <th>Plateforme</th>
+                        <th>Date</th>
+                        <th>Statut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let reservation of lesReservations">
+                        <td><a routerLink="/reservation/{{reservation.id}}">{{reservation.id}}</a></td>
+                        <td>{{reservation.nomClient}}<br>{{reservation.emailClient}}<br>{{reservation.numeroTelephone}}</td>
+                        <td>{{reservation.plateforme}}</td>
+                        <td>{{reservation.dateDeReservation | date: 'dd/MM/yyyy'}}</td>
+                        <td>{{reservation.statutReservation}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

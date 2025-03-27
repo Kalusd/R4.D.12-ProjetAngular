@@ -17,4 +17,8 @@ export class ReservationsService {
   getReservationById(id: number): Observable<Reservation> {
     return this.http.get<Reservation>('http://localhost:3000/reservations/' + id);
   }
+
+  getReservationsByGame(gameId: number): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>('http://localhost:3000/reservations?idJeuReservation=' + gameId);
+  }
 }

@@ -17,12 +17,15 @@ export class ReservationComponent implements OnInit{
   constructor(private monServiceReservations: ReservationsService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-      this.idReservation = this.route.snapshot.params['id'];
-      if (this.idReservation !== undefined) {
-        this.monServiceReservations.getReservationById(+this.idReservation).subscribe(reservation => {this.laReservation = reservation});
-      }
-      else {
-        this.laReservation = this.Reservation
-      }
+    // Récupération de l'identifiant de la réservation dans l'url
+    this.idReservation = this.route.snapshot.params['id'];
+    if (this.idReservation !== undefined) { // S'il y avait un identifiant dans l'url
+      // Récupération des informations de la réservation par son identifiant
+      this.monServiceReservations.getReservationById(+this.idReservation).subscribe(reservation => {this.laReservation = reservation});
+    }
+    else {
+      // Récupération des informations de la réservation par binding
+      this.laReservation = this.Reservation
+    }
   }
 }
