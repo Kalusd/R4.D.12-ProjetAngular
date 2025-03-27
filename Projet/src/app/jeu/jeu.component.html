@@ -1,4 +1,9 @@
 <div class="jeu-card" *ngIf="leJeu">
+    <!-- Si un identifiant est donné dans l'url (= on est sur la page du jeu) -->
+    <p *ngIf="idJeu !== undefined">
+        <a routerLink="/catalogue-jeux" class="button"><button>Retour au catalogue de jeux</button></a>
+    </p>
+
     <h3>{{leJeu.titre | uppercase}}</h3>
     <img [src]="leJeu.cheminImage ? leJeu.cheminImage : 'https://placehold.co/512x512?text=' + leJeu.titre" [alt]="'Illustration ' + leJeu.titre">
     <p>Sortie le : {{leJeu.dateDeSortie | date: 'dd/MM/yyyy'}}</p>

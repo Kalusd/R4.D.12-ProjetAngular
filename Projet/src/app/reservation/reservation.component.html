@@ -1,4 +1,9 @@
 <div class="reservation-card" *ngIf="laReservation">
+    <!-- Si un identifiant est donné dans l'url (= on est sur la page de la reservation) -->
+    <p *ngIf="idReservation !== undefined">
+        <a routerLink="/catalogue-reservations" class="button"><button>Retour au catalogue de réservations</button></a>
+    </p>
+
     <h3>Réservation n°{{laReservation.id}}</h3>
     <p>Client : {{laReservation.nomClient}}</p>
     <p>Email client : {{laReservation.emailClient}}</p>
@@ -7,6 +12,8 @@
     <p>Plateforme : {{laReservation.plateforme}}</p>
     <p>Date de réservation : {{laReservation.dateDeReservation | date: 'dd/MM/yyyy'}}</p>
     <p>Statut de la réservation : {{laReservation.statutReservation}}</p>
+
+    <!-- Si aucun identifiant n'est donné dans l'url (= on est sur la page du catalogue) -->
     <p *ngIf="idReservation === undefined">
         <a routerLink="/reservation/{{laReservation.id}}" class="button"><button>Voir le détail</button></a>
     </p>
