@@ -8,7 +8,8 @@
             "developpeur": "Mojang",
             "dateDeSortie": "2011/11/18",
             "stockDisponible": 10,
-            "prix": 29.99
+            "prix": 29.99,
+            "cheminImage": "jeux/images/minecraft.png"
         },
         {
             "id": 2,
@@ -18,7 +19,8 @@
             "developpeur": "Rockstar Games",
             "dateDeSortie": "2018/10/26",
             "stockDisponible": 3,
-            "prix": 59.99
+            "prix": 59.99,
+            "cheminImage": "jeux/images/rdr2.png"
         },
         {
             "id": 3,
@@ -28,7 +30,8 @@
             "developpeur": "Nintendo",
             "dateDeSortie": "2017/03/03",
             "stockDisponible": 5,
-            "prix": 59.99
+            "prix": 59.99,
+            "cheminImage": "jeux/images/zeldabotw.png"
         }
     ],
 

@@ -1,5 +1,6 @@
 <div class="jeu-card" *ngIf="leJeu">
     <h3>{{leJeu.titre | uppercase}}</h3>
+    <img [src]="leJeu.cheminImage ? leJeu.cheminImage : 'https://placehold.co/512x512?text=' + leJeu.titre" [alt]="'Illustration ' + leJeu.titre">
     <p>Sortie le : {{leJeu.dateDeSortie | date: 'dd/MM/yyyy'}}</p>
     <p>Developpeur : {{leJeu.developpeur}}</p>
     <p>Prix : {{leJeu.prix | currency: 'EUR'}}</p>

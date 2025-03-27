@@ -7,8 +7,9 @@ export class Jeu {
     dateDeSortie!: Date;
     stockDisponible!: number;
     prix!: number;
+    cheminImage!: string;
 
-    constructor(id: number, titre: string, plateforme: Array<string>, genre: Array<string>, developpeur: string, dateDeSortie: Date, stockDisponible: number, prix: number) {
+    constructor(id: number, titre: string, plateforme: Array<string>, genre: Array<string>, developpeur: string, dateDeSortie: Date, stockDisponible: number, prix: number, cheminImage: string) {
         this.id = id;
         this.titre = titre;
         this.plateforme = plateforme;
@@ -17,5 +18,6 @@ export class Jeu {
         this.dateDeSortie = dateDeSortie;
         this.stockDisponible = stockDisponible;
         this.prix = prix;
+        this.cheminImage = cheminImage;
     }
 }
