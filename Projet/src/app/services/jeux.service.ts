@@ -18,6 +18,10 @@ export class JeuxService {
     return this.http.get<Jeu>('http://localhost:3000/jeux/' + id);
   }
 
+  getJeuByTitre(titre: string): Observable<Jeu> {
+    return this.http.get<Jeu>('http://localhost:3000/jeux?titre=' + titre);
+  }
+
   addJeu(newJeu: Jeu): Observable<Jeu> {
     // Conversion de la chaine de caractères des plateformes en tableau
     if (typeof newJeu.plateforme === 'string') {
