@@ -1,7 +1,7 @@
 export class Jeu {
     id!: number;
     titre!: string;
-    plateforme!: Array<string>;
+    plateforme!: Array<string> | string;
     genre!: string;
     developpeur!: string;
     dateDeSortie!: Date;
@@ -9,7 +9,7 @@ export class Jeu {
     prix!: number;
     cheminImage!: string;
 
-    constructor(id: number, titre: string, plateforme: Array<string>, genre: string, developpeur: string, dateDeSortie: Date, stockDisponible: number, prix: number, cheminImage: string) {
+    constructor(id: number, titre: string, plateforme: Array<string> | string, genre: string, developpeur: string, dateDeSortie: Date, stockDisponible: number, prix: number, cheminImage: string) {
         this.id = id;
         this.titre = titre;
         this.plateforme = plateforme;
