@@ -1,4 +1,6 @@
 <div class="liste-reservation">
+    <h2>Liste des réservations</h2>
+    <a routerLink="/create-reservation" class="button"><button>Créer une réservation</button></a>
     <ng-container *ngFor="let uneReservation of listeReservation">
         <app-reservation [Reservation]="uneReservation"></app-reservation>
     </ng-container>
