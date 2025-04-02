@@ -10,6 +10,7 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { ListeReservationComponent } from './liste-reservation/liste-reservation.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CreateJeuComponent } from './create-jeu/create-jeu.component';
+import { CreateReservationComponent } from './create-reservation/create-reservation.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CreateJeuComponent } from './create-jeu/create-jeu.component';
     ListeJeuComponent,
     ReservationComponent,
     ListeReservationComponent,
-    CreateJeuComponent
+    CreateJeuComponent,
+    CreateReservationComponent
   ],
   imports: [
     BrowserModule,

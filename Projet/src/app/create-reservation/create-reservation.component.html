@@ -1,0 +1,99 @@
+<div class="monForm">
+    <section class="subForm saisieForm">
+        <h2>Nouvelle réservation</h2>
+        <form [formGroup]="leFormulaire">
+            <div class="form-group">
+                <label for="nomClient">Nom du client</label>
+                <div class="input">
+                    <input type="text" class="form-control" id="nomClient" formControlName="nomClient">
+                    <div *ngIf="leFormulaire.get('nomClient')?.invalid && leFormulaire.get('nomClient')?.errors && (leFormulaire.get('nomClient')?.dirty || leFormulaire.get('nomClient')?.touched)" class="alert alert-danger">
+                        <small class="text-danger" *ngIf="leFormulaire.get('nomClient')?.hasError?.('required')">Le nom du client est requis.</small>
+                        <small class="text-danger" *ngIf="leFormulaire.get('nomClient')?.hasError?.('minlength')">Ce champ doit comporter au moins 3 caractères.</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="emailClient">Email du client</label>
+                <div class="input">
+                    <input type="text" class="form-control" id="emailClient" formControlName="emailClient">
+                    <div *ngIf="leFormulaire.get('emailClient')?.invalid && leFormulaire.get('emailClient')?.errors && (leFormulaire.get('emailClient')?.dirty || leFormulaire.get('emailClient')?.touched)" class="alert alert-danger">
+                        <small class="text-danger" *ngIf="leFormulaire.get('emailClient')?.hasError?.('required')">L'email du client est requis.</small>
+                        <small class="text-danger" *ngIf="leFormulaire.get('emailClient')?.hasError?.('email')">L'adresse email entrée n'est pas valide.</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="numeroTelephone">Numéro de téléphone du client</label>
+                <div class="input">
+                    <input type="text" class="form-control" id="numeroTelephone" formControlName="numeroTelephone">
+                    <div *ngIf="leFormulaire.get('numeroTelephone')?.invalid && leFormulaire.get('numeroTelephone')?.errors && (leFormulaire.get('numeroTelephone')?.dirty || leFormulaire.get('numeroTelephone')?.touched)" class="alert alert-danger">
+                        <small class="text-danger" *ngIf="leFormulaire.get('numeroTelephone')?.hasError?.('required')">Le numéro de téléphone du client est requis.</small>
+                        <small class="text-danger" *ngIf="leFormulaire.get('numeroTelephone')?.hasError?.('pattern')">Le numéro de téléphone doit comporter 10 chiffres.</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <!-- Ajouter options de titre à partir du json -->
+                <!-- Ajouter vérification du choix d'une option -->
+                <label for="titreJeuReservation">Titre du jeu réservé</label>
+                <div class="input">
+                    <input type="text" class="form-control" id="titreJeuReservation" formControlName="titreJeuReservation">
+                    <div *ngIf="leFormulaire.get('titreJeuReservation')?.invalid && leFormulaire.get('titreJeuReservation')?.errors && (leFormulaire.get('titreJeuReservation')?.dirty || leFormulaire.get('titreJeuReservation')?.touched)" class="alert alert-danger">
+                        <small class="text-danger" *ngIf="leFormulaire.get('titreJeuReservation')?.hasError?.('required')">Le titre du jeu est requis.</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <!-- Ajouter options de plateforme à partir du json -->
+                <!-- Ajouter vérification du choix d'une option -->
+                <label for="plateforme">Plateforme du jeu réservé</label>
+                <div class="input">
+                    <input type="text" class="form-control" id="plateforme" formControlName="plateforme">
+                    <div *ngIf="leFormulaire.get('plateforme')?.invalid && leFormulaire.get('plateforme')?.errors && (leFormulaire.get('plateforme')?.dirty || leFormulaire.get('plateforme')?.touched)" class="alert alert-danger">
+                        <small class="text-danger" *ngIf="leFormulaire.get('plateforme')?.hasError?.('required')">La plateforme du jeu est requise.</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dateDeReservation">Date de réservation du jeu</label>
+                <div class="input">
+                    <input type="date" class="form-control" id="dateDeReservation" formControlName="dateDeReservation">
+                    <div *ngIf="leFormulaire.get('dateDeReservation')?.invalid && leFormulaire.get('dateDeReservation')?.errors && (leFormulaire.get('dateDeReservation')?.dirty || leFormulaire.get('dateDeReservation')?.touched)" class="alert alert-danger">
+                        <small class="text-danger" *ngIf="leFormulaire.get('dateDeReservation')?.hasError?.('required')">La date de réservation du jeu est requise.</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <!-- Ajouter options de statuts à partir du json -->
+                <!-- Ajouter vérification du choix d'une option -->
+                <label for="statutReservation">Statut de la réservation</label>
+                <div class="input">
+                    <input type="text" class="form-control" id="statutReservation" formControlName="statutReservation">
+                    <div *ngIf="leFormulaire.get('statutReservation')?.invalid && leFormulaire.get('statutReservation')?.errors && (leFormulaire.get('stockDisponible')?.dirty || leFormulaire.get('stockDisponible')?.touched)" class="alert alert-danger">
+                        <small class="text-danger" *ngIf="leFormulaire.get('statutReservation')?.hasError?.('required')">Le statut de la réservation est requis.</small>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" (click)="createReservation()" [disabled]="leFormulaire.invalid">Ajouter</button>
+        </form>
+    </section>
+    <section class="subForm visuForm">
+        <h2>Aperçu de la réservation</h2>
+        <div *ngIf="reservationActuelle !== undefined">
+            <h3><strong>Nom du client : </strong>{{reservationActuelle.nomClient}}</h3>
+            <p><strong>Email du client : </strong>{{reservationActuelle.emailClient}}</p>
+            <p><strong>Numéro de téléphone du client : </strong>{{reservationActuelle.numeroTelephone}}</p>
+            <p><strong>Titre du jeu réservé : </strong>{{reservationActuelle.titreJeuReservation}}</p>
+            <p><strong>Plateforme du jeu réservé : </strong>{{reservationActuelle.plateforme}}</p>
+            <p><strong>Date de réservation du jeu : </strong>{{reservationActuelle.dateDeReservation}}</p>
+            <p><strong>Statut de la réservation : </strong>{{reservationActuelle.statutReservation}}</p>
+        </div>
+    </section>
+</div>
