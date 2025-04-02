@@ -8,6 +8,8 @@ import { JeuComponent } from './jeu/jeu.component';
 import { ListeJeuComponent } from './liste-jeu/liste-jeu.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { ListeReservationComponent } from './liste-reservation/liste-reservation.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CreateJeuComponent } from './create-jeu/create-jeu.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,15 @@ import { ListeReservationComponent } from './liste-reservation/liste-reservation
     JeuComponent,
     ListeJeuComponent,
     ReservationComponent,
-    ListeReservationComponent
+    ListeReservationComponent,
+    CreateJeuComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

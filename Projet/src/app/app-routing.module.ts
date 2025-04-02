@@ -4,6 +4,7 @@ import { JeuComponent } from './jeu/jeu.component';
 import { ListeJeuComponent } from './liste-jeu/liste-jeu.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { ListeReservationComponent } from './liste-reservation/liste-reservation.component';
+import { CreateJeuComponent } from './create-jeu/create-jeu.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,10 @@ const routes: Routes = [
     path: 'reservation/:id',
     component: ReservationComponent
   },
-
+  {
+    path: 'create-jeu',
+    component: CreateJeuComponent
+  },
 ];
 
 @NgModule({
