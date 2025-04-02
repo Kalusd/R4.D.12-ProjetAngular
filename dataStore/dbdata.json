@@ -1,73 +1,83 @@
 {
-    "jeux": [
-        {
-            "id": 1,
-            "titre": "Minecraft",
-            "plateforme": ["PC", "PS4", "Xbox One", "Switch"],
-            "genre": "Sandbox",
-            "developpeur": "Mojang",
-            "dateDeSortie": "2011/11/18",
-            "stockDisponible": 10,
-            "prix": 29.99,
-            "cheminImage": "jeux/images/minecraft.png"
-        },
-        {
-            "id": 2,
-            "titre": "Red Dead Redemption 2",
-            "plateforme": ["PC", "PS4", "Xbox One"],
-            "genre": "Action",
-            "developpeur": "Rockstar Games",
-            "dateDeSortie": "2018/10/26",
-            "stockDisponible": 3,
-            "prix": 59.99,
-            "cheminImage": "jeux/images/rdr2.png"
-        },
-        {
-            "id": 3,
-            "titre": "The Legend of Zelda: Breath of the Wild",
-            "plateforme": ["Switch"],
-            "genre": "Action",
-            "developpeur": "Nintendo",
-            "dateDeSortie": "2017/03/03",
-            "stockDisponible": 5,
-            "prix": 59.99,
-            "cheminImage": "jeux/images/zeldabotw.png"
-        }
-    ],
-
-    "reservations": [
-        {
-        "id": 1,
-        "nomClient": "John Doe",
-        "emailClient": "johndoe@mail.com",
-        "numeroTelephone": "0123456789",
-        "idJeuReservation": 1,
-        "titreJeuReservation": "Minecraft",
-        "plateforme": "PC",
-        "dateDeReservation": "2025/02/21",
-        "statutReservation": "Confirmée"
-        },
-        {
-        "id": 2,
-        "nomClient": "Jane Doe",
-        "emailClient": "janedoe@mail.com",
-        "numeroTelephone": "0987654321",
-        "idJeuReservation": 2,
-        "titreJeuReservation": "Red Dead Redemption 2",
-        "plateforme": "PS4",
-        "dateDeReservation": "2025/03/24",
-        "statutReservation": "En attente"
-        },
-        {
-        "id": 3,
-        "nomClient": "John Doe",
-        "emailClient": "johndoe@mail.com",
-        "numeroTelephone": "0896745231",
-        "idJeuReservation": 2,
-        "titreJeuReservation": "Red Dead Redemption 2",
-        "plateforme": "Xbox One",
-        "dateDeReservation": "2025/03/24",
-        "statutReservation": "Annulée"
-        }
-    ]
+  "jeux": [
+    {
+      "id": "1",
+      "titre": "Minecraft",
+      "plateforme": [
+        "PC",
+        "PS4",
+        "Xbox One",
+        "Switch"
+      ],
+      "genre": "Sandbox",
+      "developpeur": "Mojang",
+      "dateDeSortie": "2011/11/18",
+      "stockDisponible": 10,
+      "prix": 29.99,
+      "cheminImage": "jeux/images/minecraft.png"
+    },
+    {
+      "id": "2",
+      "titre": "Red Dead Redemption 2",
+      "plateforme": [
+        "PC",
+        "PS4",
+        "Xbox One"
+      ],
+      "genre": "Action",
+      "developpeur": "Rockstar Games",
+      "dateDeSortie": "2018/10/26",
+      "stockDisponible": 3,
+      "prix": 59.99,
+      "cheminImage": "jeux/images/rdr2.png"
+    },
+    {
+      "id": "3",
+      "titre": "The Legend of Zelda: Breath of the Wild",
+      "plateforme": [
+        "Switch"
+      ],
+      "genre": "Action",
+      "developpeur": "Nintendo",
+      "dateDeSortie": "2017/03/03",
+      "stockDisponible": 5,
+      "prix": 59.99,
+      "cheminImage": "jeux/images/zeldabotw.png"
+    }
+  ],
+  "reservations": [
+    {
+      "id": "1",
+      "nomClient": "John Doe",
+      "emailClient": "johndoe@mail.com",
+      "numeroTelephone": "0123456789",
+      "idJeuReservation": 1,
+      "titreJeuReservation": "Minecraft",
+      "plateforme": "PC",
+      "dateDeReservation": "2025/02/21",
+      "statutReservation": "Confirmée"
+    },
+    {
+      "id": "2",
+      "nomClient": "Jane Doe",
+      "emailClient": "janedoe@mail.com",
+      "numeroTelephone": "0987654321",
+      "idJeuReservation": 2,
+      "titreJeuReservation": "Red Dead Redemption 2",
+      "plateforme": "PS4",
+      "dateDeReservation": "2025/03/24",
+      "statutReservation": "En attente"
+    },
+    {
+      "id": "3",
+      "nomClient": "John Doe",
+      "emailClient": "johndoe@mail.com",
+      "numeroTelephone": "0896745231",
+      "idJeuReservation": 2,
+      "titreJeuReservation": "Red Dead Redemption 2",
+      "plateforme": "Xbox One",
+      "dateDeReservation": "2025/03/24",
+      "statutReservation": "Annulée"
+    }
+  ]
 }
