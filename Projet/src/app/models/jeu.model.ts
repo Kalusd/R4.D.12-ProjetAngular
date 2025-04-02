@@ -2,14 +2,14 @@ export class Jeu {
     id!: number;
     titre!: string;
     plateforme!: Array<string>;
-    genre!: Array<string>;
+    genre!: string;
     developpeur!: string;
     dateDeSortie!: Date;
     stockDisponible!: number;
     prix!: number;
     cheminImage!: string;
 
-    constructor(id: number, titre: string, plateforme: Array<string>, genre: Array<string>, developpeur: string, dateDeSortie: Date, stockDisponible: number, prix: number, cheminImage: string) {
+    constructor(id: number, titre: string, plateforme: Array<string>, genre: string, developpeur: string, dateDeSortie: Date, stockDisponible: number, prix: number, cheminImage: string) {
         this.id = id;
         this.titre = titre;
         this.plateforme = plateforme;
