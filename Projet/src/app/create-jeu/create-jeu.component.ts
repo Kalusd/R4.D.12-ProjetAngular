@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Jeu } from '../models/jeu.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { JeuxService } from '../services/jeux.service';
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './create-jeu.component.html',
   styleUrl: './create-jeu.component.scss'
 })
-export class CreateJeuComponent {
+export class CreateJeuComponent implements OnInit { 
   leFormulaire!: FormGroup;
   jeuActuel!: Jeu;
   regexPlateformesJeu = new RegExp(/^(\s*[\w\s-]+\s*)(;\s*[\w\s-]+\s*)*$/);
