@@ -36,14 +36,12 @@
             </div>
 
             <div class="form-group">
-                <!-- Ajouter options de titre à partir du json -->
-                <!-- Ajouter vérification du choix d'une option -->
                 <label for="titreJeuReservation">Titre du jeu réservé</label>
-                <div class="input">
-                    <input type="text" class="form-control" id="titreJeuReservation" formControlName="titreJeuReservation">
-                    <div *ngIf="leFormulaire.get('titreJeuReservation')?.invalid && leFormulaire.get('titreJeuReservation')?.errors && (leFormulaire.get('titreJeuReservation')?.dirty || leFormulaire.get('titreJeuReservation')?.touched)" class="alert alert-danger">
-                        <small class="text-danger" *ngIf="leFormulaire.get('titreJeuReservation')?.hasError?.('required')">Le titre du jeu est requis.</small>
-                    </div>
+                <select class="form-control" id="titreJeuReservation" formControlName="titreJeuReservation" (change)="onJeuChange($event)">
+                    <option *ngFor="let jeu of listeJeux" [value]="jeu.titre">{{jeu.titre}}</option>
+                </select>
+                <div *ngIf="leFormulaire.get('titreJeuReservation')?.invalid && leFormulaire.get('titreJeuReservation')?.errors && (leFormulaire.get('titreJeuReservation')?.dirty || leFormulaire.get('titreJeuReservation')?.touched)" class="alert alert-danger">
+                    <small class="text-danger" *ngIf="leFormulaire.get('titreJeuReservation')?.hasError?.('required')">Le titre du jeu est requis.</small>
                 </div>
             </div>
 
@@ -51,11 +49,11 @@
                 <!-- Ajouter options de plateforme à partir du json -->
                 <!-- Ajouter vérification du choix d'une option -->
                 <label for="plateforme">Plateforme du jeu réservé</label>
-                <div class="input">
-                    <input type="text" class="form-control" id="plateforme" formControlName="plateforme">
-                    <div *ngIf="leFormulaire.get('plateforme')?.invalid && leFormulaire.get('plateforme')?.errors && (leFormulaire.get('plateforme')?.dirty || leFormulaire.get('plateforme')?.touched)" class="alert alert-danger">
-                        <small class="text-danger" *ngIf="leFormulaire.get('plateforme')?.hasError?.('required')">La plateforme du jeu est requise.</small>
-                    </div>
+                <select class="form-control" id="plateforme" formControlName="plateforme">
+                    <option *ngFor="let plateforme of plateformesDisponibles" [value]="plateforme">{{ plateforme }}</option>
+                </select>
+                <div *ngIf="leFormulaire.get('plateforme')?.invalid && leFormulaire.get('plateforme')?.errors && (leFormulaire.get('plateforme')?.dirty || leFormulaire.get('plateforme')?.touched)" class="alert alert-danger">
+                    <small class="text-danger" *ngIf="leFormulaire.get('plateforme')?.hasError?.('required')">La plateforme du jeu est requise.</small>
                 </div>
             </div>
 
@@ -83,17 +81,5 @@
 
             <button type="submit" (click)="createReservation()" [disabled]="leFormulaire.invalid">Ajouter</button>
         </form>
-    </section>
-    <section class="subForm visuForm">
-        <h2>Aperçu de la réservation</h2>
-        <div *ngIf="reservationActuelle !== undefined">
-            <h3><strong>Nom du client : </strong>{{reservationActuelle.nomClient}}</h3>
-            <p><strong>Email du client : </strong>{{reservationActuelle.emailClient}}</p>
-            <p><strong>Numéro de téléphone du client : </strong>{{reservationActuelle.numeroTelephone}}</p>
-            <p><strong>Titre du jeu réservé : </strong>{{reservationActuelle.titreJeuReservation}}</p>
-            <p><strong>Plateforme du jeu réservé : </strong>{{reservationActuelle.plateforme}}</p>
-            <p><strong>Date de réservation du jeu : </strong>{{reservationActuelle.dateDeReservation}}</p>
-            <p><strong>Statut de la réservation : </strong>{{reservationActuelle.statutReservation}}</p>
-        </div>
     </section>
 </div>
