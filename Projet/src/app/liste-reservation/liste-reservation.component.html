@@ -1,7 +1,33 @@
 <div class="liste-reservation">
     <h2>Liste des réservations</h2>
+
+    <!-- Barre de recherche -->
+    <div class="from-group">
+        <label for="recherche">Rechercher une réservation par nom ou email</label>
+        <input type="text" id="recherche" class="form-control" [(ngModel)]="termeRecherche" (ngModelChange)="appliquerFiltrage()" placeholder="Rechercher par nom ou email" >
+    </div>
+
+    <!-- Filtrage par statut -->
+    <div class="form-group">
+        <label for="filtre">Filtrer par statut</label>
+        <select id="filtre" class="form-control" [(ngModel)]="filtreStatut" (ngModelChange)="appliquerFiltrage()">
+            <option value="">Tous les statuts</option>
+            <option value="En attente">En attente</option>
+            <option value="Confirmée">Confirmée</option>
+            <option value="Annulée">Annulée</option>
+        </select>
+    </div>
+
+    <!-- Bouton de création d'une réservation -->
     <a routerLink="/create-reservation" class="button"><button>Créer une réservation</button></a>
-    <ng-container *ngFor="let uneReservation of listeReservation">
+
+    <!-- Message si aucun résultat n'est trouvé -->
+    <div *ngIf="listeReservationFiltree.length === 0" class="alert alert-warning">
+        Aucun résultat trouvé pour votre recherche ou filtre.
+    </div>
+
+    <!-- Liste des réservations -->
+    <ng-container *ngFor="let uneReservation of listeReservationFiltree">
         <app-reservation [Reservation]="uneReservation"></app-reservation>
     </ng-container>
 </div>

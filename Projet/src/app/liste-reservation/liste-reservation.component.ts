@@ -11,11 +11,33 @@ import { ReservationsService } from '../services/reservations.service';
 export class ListeReservationComponent implements OnInit {
   
     listeReservation! : Reservation[];
+    listeReservationFiltree! : Reservation[];
+    termeRecherche: string = '';
+    filtreStatut: string = '';
   
     constructor(private monServiceReservations: ReservationsService) {}
   
     ngOnInit(): void {
-      this.monServiceReservations.getReservations().subscribe((reservations) => {this.listeReservation = reservations;});
+      this.monServiceReservations.getReservations().subscribe((reservations) => {
+        this.listeReservation = reservations;
+        this.listeReservationFiltree = reservations;
+      });
     }
+
+    appliquerFiltrage(): void {
+      this.listeReservationFiltree = this.listeReservation.filter((reservation) => {
+        const resultatsRecherche = this.termeRecherche
+          ? reservation.nomClient.toLowerCase().includes(this.termeRecherche.toLowerCase()) ||
+            reservation.emailClient.toLowerCase().includes(this.termeRecherche.toLowerCase())
+          : true;
+
+        const resultatsFiltrageStatut = this.filtreStatut
+          ? reservation.statutReservation === this.filtreStatut
+          : true;
+
+        return resultatsRecherche && resultatsFiltrageStatut;
+      });
+    }
+
 
 }
