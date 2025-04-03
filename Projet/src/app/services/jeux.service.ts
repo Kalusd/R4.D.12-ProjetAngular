@@ -18,7 +18,7 @@ export class JeuxService {
     return this.http.get<Jeu>('http://localhost:3000/jeux/' + id);
   }
 
-  getJeuByTitre(titre: string): Observable<Jeu[]> {
+  getJeuxByTitre(titre: string): Observable<Jeu[]> {
     return this.http.get<Jeu[]>('http://localhost:3000/jeux?titre=' + titre);
   }
 
