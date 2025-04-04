@@ -1,7 +1,40 @@
 <div class="liste-jeu">
     <h2>Liste des jeux</h2>
+
+    <!-- Barre de recherche -->
+    <div class="from-group">
+        <label for="recherche">Rechercher un jeu</label>
+        <input type="text" id="recherche" class="form-control" [(ngModel)]="termeRecherche" (ngModelChange)="appliquerFiltrage()" placeholder="Rechercher par nom" >
+    </div>
+
+    <!-- Filtrage par plateforme -->
+    <div class="form-group">
+        <label for="filtrePlateforme">Filtrer par plateforme</label>
+        <select id="filtrePlateforme" class="form-control" [(ngModel)]="filtrePlateforme" (ngModelChange)="appliquerFiltrage()">
+            <option value="">Toutes les plateformes</option>
+            <option *ngFor="let plateforme of listePlateformes" [value]="plateforme">{{plateforme}}</option>
+        </select>
+    </div>
+
+    <!-- Filtrage par genre -->
+    <div class="form-group">
+        <label for="filtreGenre">Filtrer par genre</label>
+        <select id="filtreGenre" class="form-control" [(ngModel)]="filtreGenre" (ngModelChange)="appliquerFiltrage()">
+            <option value="">Tous les genres</option>
+            <option *ngFor="let genre of listeGenres" [value]="genre">{{genre}}</option>
+        </select>
+    </div>
+
+    <!-- Bouton de création d'un jeu -->
     <a routerLink="/create-jeu" class="button"><button>Créer un jeu</button></a>
-    <ng-container *ngFor="let unJeu of listeJeu">
+
+    <!-- Message si aucun résultat n'est trouvé -->
+    <div *ngIf="listeJeuFiltree.length === 0" class="alert alert-warning">
+        Aucun résultat trouvé pour votre recherche ou filtre.
+    </div>
+
+    <!-- Liste des jeux -->
+    <ng-container *ngFor="let unJeu of listeJeuFiltree">
         <app-jeu [Jeu]="unJeu"></app-jeu>
     </ng-container>
 </div>
