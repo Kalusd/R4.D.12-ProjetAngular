@@ -1,6 +1,11 @@
 <div class="liste-reservation">
     <h2>Liste des réservations</h2>
 
+    <!-- Nombre de résultats -->
+    <div class="nombre-resultats">
+        <p>Nombre de résultats : {{ listeReservationFiltree.length }}</p>
+    </div>
+
     <!-- Barre de recherche -->
     <div class="from-group">
         <label for="recherche">Rechercher une réservation par nom ou email</label>
