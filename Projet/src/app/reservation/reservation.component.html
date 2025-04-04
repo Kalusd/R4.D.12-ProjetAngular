@@ -8,7 +8,7 @@
     <p>Client : {{laReservation.nomClient}}</p>
     <p>Email client : {{laReservation.emailClient}}</p>
     <p>Numéro de téléphone client : {{laReservation.numeroTelephone}}</p>
-    <p>Titre du jeu réservé : {{laReservation.titreJeuReservation}}</p>
+    <p>Titre du jeu réservé : <a routerLink="/jeu/{{laReservation.idJeuReservation}}">{{laReservation.titreJeuReservation}}</a></p>
     <p>Plateforme : {{laReservation.plateforme}}</p>
     <p>Date de réservation : {{laReservation.dateDeReservation | date: 'dd/MM/yyyy'}}</p>
     <p>Statut de la réservation : {{laReservation.statutReservation}}</p>
