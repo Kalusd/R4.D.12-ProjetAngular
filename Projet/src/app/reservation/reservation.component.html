@@ -1,37 +1,24 @@
 <div *ngIf="laReservation">
     <!-- Si un identifiant est donné dans l'url (= on est sur la page de la reservation) -->
-    <div *ngIf="idReservation !== undefined">
-        <div *ngIf="afficherBoutonRetour">
-            <button mat-raised-button routerLink="/catalogue-reservations" color="primary"><mat-icon>arrow_back</mat-icon> Retour au catalogue</button>
-        </div>
-
-        <h3>Réservation n°{{laReservation.id}}</h3>
-        <p>Client : {{laReservation.nomClient}}</p>
-        <p>Email client : {{laReservation.emailClient}}</p>
-        <p>Numéro de téléphone client : {{laReservation.numeroTelephone}}</p>
-        <p>Titre du jeu réservé : <a routerLink="/jeu/{{laReservation.idJeuReservation}}">{{laReservation.titreJeuReservation}}</a></p>
-        <p>Plateforme : {{laReservation.plateforme}}</p>
-        <p>Date de réservation : {{laReservation.dateDeReservation | date: 'dd/MM/yyyy'}}</p>
-        <p>Statut de la réservation : {{laReservation.statutReservation}}</p>
+    <div *ngIf="afficherBoutonRetour && idReservation !== undefined">
+        <button mat-raised-button routerLink="/catalogue-reservations" color="primary"><mat-icon>arrow_back</mat-icon> Retour au catalogue</button>
     </div>
-
-    <!-- Si aucun identifiant n'est donné dans l'url (= on est sur la page du catalogue) -->
-    <div *ngIf="idReservation === undefined">
-        <mat-card>
-            <mat-card-header>
-                <mat-card-title>Réservation n°{{ Reservation.id }}</mat-card-title>
-                <mat-card-subtitle>{{ Reservation.nomClient }}</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-                <p><strong>Email : </strong> {{ Reservation.emailClient }}</p>
-                <p><strong>Jeu réservé : </strong> <a routerLink="/jeu/{{Reservation.idJeuReservation}}">{{ Reservation.titreJeuReservation }}</a></p>
-                <p><strong>Plateforme : </strong> {{ Reservation.plateforme }}</p>
-                <p><strong>Date : </strong> {{ Reservation.dateDeReservation | date: 'dd/MM/yyyy' }}</p>
-                <p><strong>Statut : </strong> {{ Reservation.statutReservation }}</p>
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-button color="primary" routerLink="/reservation/{{ Reservation.id }}">Détails du réservation <mat-icon>keyboard_arrow_right</mat-icon></button>
-            </mat-card-actions>
-        </mat-card>
-    </div>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Réservation n°{{ laReservation.id }}</mat-card-title>
+            <mat-card-subtitle>{{ laReservation.nomClient }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p><strong>Email : </strong> {{ laReservation.emailClient }}</p>
+            <p><strong>Numéro de téléphone client : </strong>{{laReservation.numeroTelephone}}</p>
+            <p><strong>Jeu réservé : </strong> <a routerLink="/jeu/{{laReservation.idJeuReservation}}">{{ laReservation.titreJeuReservation }}</a></p>
+            <p><strong>Plateforme : </strong> {{ laReservation.plateforme }}</p>
+            <p><strong>Date de réservation : </strong> {{ laReservation.dateDeReservation | date: 'dd/MM/yyyy' }}</p>
+            <p><strong>Statut : </strong> {{ laReservation.statutReservation }}</p>
+        </mat-card-content>
+        <!-- Si aucun identifiant n'est pas donné dans l'url (= on est sur la page du catalogue) -->
+        <mat-card-actions *ngIf="idReservation === undefined">
+            <button mat-button color="primary" routerLink="/reservation/{{ laReservation.id }}">Détails du réservation <mat-icon>keyboard_arrow_right</mat-icon></button>
+        </mat-card-actions>
+    </mat-card>
 </div>
