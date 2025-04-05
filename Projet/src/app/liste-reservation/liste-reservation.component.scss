@@ -11,7 +11,14 @@
         text-align: right;
     }
 
-    .mat-elevation-z8 {
-        margin-top: 20px;
+    .liste-reservations {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .carte-reservation {
+        max-width: 300px;
+        margin: auto;
     }
 }

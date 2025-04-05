@@ -34,7 +34,7 @@
     </div>
 
     <!-- Liste des réservations -->
-    <div *ngIf="listeReservationFiltree.length > 0">
+    <div class="liste-reservations" *ngIf="listeReservationFiltree.length > 0">
         <ng-container *ngFor="let uneReservation of listeReservationFiltree">
             <app-reservation  [Reservation]="uneReservation"></app-reservation>
         </ng-container>
