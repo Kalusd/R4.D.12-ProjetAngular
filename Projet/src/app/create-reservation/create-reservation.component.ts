@@ -38,15 +38,13 @@ export class CreateReservationComponent implements OnInit {
     })
   }
 
-  onJeuChange(event: Event): void {
-    const titreJeu = (event.target as HTMLSelectElement).value;
+  onJeuChange(titreJeu: string): void {
     // Récupération du jeu choisi
     const jeuChoisi = this.listeJeux.find(jeu => jeu.titre === titreJeu);
     if (jeuChoisi) {
       // Mise à jour des plateformes disponibles en fonction du jeu choisi
       this.plateformesDisponibles = Array.isArray(jeuChoisi.plateforme) ? jeuChoisi.plateforme : [jeuChoisi.plateforme];
-    }
-    else {
+    } else {
       // Suppression des plateformes disponibles si aucun jeu n'est trouvé
       this.plateformesDisponibles = [];
     }

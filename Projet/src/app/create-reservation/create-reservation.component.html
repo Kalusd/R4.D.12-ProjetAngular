@@ -2,88 +2,74 @@
     <section class="subForm saisieForm">
         <h2>Nouvelle réservation</h2>
         <form [formGroup]="leFormulaire">
-            <div class="form-group">
-                <label for="nomClient">Nom du client</label>
-                <div class="input">
-                    <input type="text" class="form-control" id="nomClient" formControlName="nomClient">
-                    <div *ngIf="leFormulaire.get('nomClient')?.invalid && leFormulaire.get('nomClient')?.errors && (leFormulaire.get('nomClient')?.dirty || leFormulaire.get('nomClient')?.touched)" class="alert alert-danger">
-                        <small class="text-danger" *ngIf="leFormulaire.get('nomClient')?.hasError?.('required')">Le nom du client est requis.</small>
-                        <small class="text-danger" *ngIf="leFormulaire.get('nomClient')?.hasError?.('minlength')">Ce champ doit comporter au moins 3 caractères.</small>
-                    </div>
-                </div>
-            </div>
+            <!-- Nom du client -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Nom du client</mat-label>
+                <input matInput formControlName="nomClient" placeholder="Exemple : Jean Dupont">
+                <mat-error *ngIf="leFormulaire.get('nomClient')?.hasError('required')">Le nom du client est requis.</mat-error>
+                <mat-error *ngIf="leFormulaire.get('nomClient')?.hasError('minlength')">Le nom doit comporter au moins 3 caractères.</mat-error>
+            </mat-form-field>
 
-            <div class="form-group">
-                <label for="emailClient">Email du client</label>
-                <div class="input">
-                    <input type="text" class="form-control" id="emailClient" formControlName="emailClient">
-                    <div *ngIf="leFormulaire.get('emailClient')?.invalid && leFormulaire.get('emailClient')?.errors && (leFormulaire.get('emailClient')?.dirty || leFormulaire.get('emailClient')?.touched)" class="alert alert-danger">
-                        <small class="text-danger" *ngIf="leFormulaire.get('emailClient')?.hasError?.('required')">L'email du client est requis.</small>
-                        <small class="text-danger" *ngIf="leFormulaire.get('emailClient')?.hasError?.('email')">L'adresse email entrée n'est pas valide.</small>
-                    </div>
-                </div>
-            </div>
+            <!-- Email du client -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Email du client</mat-label>
+                <input matInput type="email" formControlName="emailClient" placeholder="Exemple : jean.dupont@example.com">
+                <mat-error *ngIf="leFormulaire.get('emailClient')?.hasError('required')">L'email est requis.</mat-error>
+                <mat-error *ngIf="leFormulaire.get('emailClient')?.hasError('email')">L'adresse email n'est pas valide.</mat-error>
+            </mat-form-field>
 
-            <div class="form-group">
-                <label for="numeroTelephone">Numéro de téléphone du client</label>
-                <div class="input">
-                    <input type="text" class="form-control" id="numeroTelephone" formControlName="numeroTelephone">
-                    <div *ngIf="leFormulaire.get('numeroTelephone')?.invalid && leFormulaire.get('numeroTelephone')?.errors && (leFormulaire.get('numeroTelephone')?.dirty || leFormulaire.get('numeroTelephone')?.touched)" class="alert alert-danger">
-                        <small class="text-danger" *ngIf="leFormulaire.get('numeroTelephone')?.hasError?.('required')">Le numéro de téléphone du client est requis.</small>
-                        <small class="text-danger" *ngIf="leFormulaire.get('numeroTelephone')?.hasError?.('pattern')">Le numéro de téléphone doit comporter 10 chiffres.</small>
-                    </div>
-                </div>
-            </div>
+            <!-- Numéro de téléphone -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Numéro de téléphone</mat-label>
+                <input matInput type="tel" formControlName="numeroTelephone" placeholder="Exemple : 0612345678">
+                <mat-error *ngIf="leFormulaire.get('numeroTelephone')?.hasError('required')">Le numéro de téléphone est requis.</mat-error>
+                <mat-error *ngIf="leFormulaire.get('numeroTelephone')?.hasError('pattern')">Le numéro doit comporter 10 chiffres.</mat-error>
+            </mat-form-field>
 
-            <div class="form-group">
-                <label for="titreJeuReservation">Titre du jeu réservé</label>
-                <div class="input">
-                    <select class="form-control" id="titreJeuReservation" formControlName="titreJeuReservation" (change)="onJeuChange($event)">
-                        <option *ngFor="let jeu of listeJeux" [value]="jeu.titre">{{jeu.titre}}</option>
-                    </select>
-                    <div *ngIf="leFormulaire.get('titreJeuReservation')?.invalid && leFormulaire.get('titreJeuReservation')?.errors && (leFormulaire.get('titreJeuReservation')?.dirty || leFormulaire.get('titreJeuReservation')?.touched)" class="alert alert-danger">
-                        <small class="text-danger" *ngIf="leFormulaire.get('titreJeuReservation')?.hasError?.('required')">Le titre du jeu est requis.</small>
-                    </div>
-                </div>
-            </div>
+            <!-- Titre du jeu réservé -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Titre du jeu réservé</mat-label>
+                <mat-select formControlName="titreJeuReservation" (selectionChange)="onJeuChange($event.value)">
+                    <mat-option value="">Sélectionnez un jeu</mat-option>
+                    <mat-option *ngFor="let jeu of listeJeux" [value]="jeu.titre">{{ jeu.titre }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="leFormulaire.get('titreJeuReservation')?.hasError('required')">Le titre du jeu est requis.</mat-error>
+            </mat-form-field>
 
-            <div class="form-group">
-                <label for="plateforme">Plateforme du jeu réservé</label>
-                <div class="input">
-                    <select class="form-control" id="plateforme" formControlName="plateforme">
-                        <option *ngFor="let plateforme of plateformesDisponibles" [value]="plateforme">{{ plateforme }}</option>
-                    </select>
-                    <div *ngIf="leFormulaire.get('plateforme')?.invalid && leFormulaire.get('plateforme')?.errors && (leFormulaire.get('plateforme')?.dirty || leFormulaire.get('plateforme')?.touched)" class="alert alert-danger">
-                        <small class="text-danger" *ngIf="leFormulaire.get('plateforme')?.hasError?.('required')">La plateforme du jeu est requise.</small>
-                    </div>
-                </div>
-            </div>
+            <!-- Plateforme -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Plateforme</mat-label>
+                <mat-select formControlName="plateforme">
+                    <mat-option value="">Sélectionnez une plateforme</mat-option>
+                    <mat-option *ngFor="let plateforme of plateformesDisponibles" [value]="plateforme">{{ plateforme }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="leFormulaire.get('plateforme')?.hasError('required')">La plateforme est requise.</mat-error>
+            </mat-form-field>
 
-            <div class="form-group">
-                <label for="dateDeReservation">Date de réservation du jeu</label>
-                <div class="input">
-                    <input type="date" class="form-control" id="dateDeReservation" formControlName="dateDeReservation">
-                    <div *ngIf="leFormulaire.get('dateDeReservation')?.invalid && leFormulaire.get('dateDeReservation')?.errors && (leFormulaire.get('dateDeReservation')?.dirty || leFormulaire.get('dateDeReservation')?.touched)" class="alert alert-danger">
-                        <small class="text-danger" *ngIf="leFormulaire.get('dateDeReservation')?.hasError?.('required')">La date de réservation du jeu est requise.</small>
-                    </div>
-                </div>
-            </div>
+            <!-- Date de réservation -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Date de réservation</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dateDeReservation">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="leFormulaire.get('dateDeReservation')?.hasError('required')">La date de réservation est requise.</mat-error>
+            </mat-form-field>
 
-            <div class="form-group">
-                <label for="statutReservation">Statut de la réservation</label>
-                <div class="input">
-                    <select class="form-control" id="statutReservation" formControlName="statutReservation">
-                        <option value="En attente">En attente</option>
-                        <option value="Confirmée">Confirmée</option>
-                        <option value="Annulée">Annulée</option>
-                    </select>
-                    <div *ngIf="leFormulaire.get('statutReservation')?.invalid && leFormulaire.get('statutReservation')?.errors && (leFormulaire.get('stockDisponible')?.dirty || leFormulaire.get('stockDisponible')?.touched)" class="alert alert-danger">
-                        <small class="text-danger" *ngIf="leFormulaire.get('statutReservation')?.hasError?.('required')">Le statut de la réservation est requis.</small>
-                    </div>
-                </div>
-            </div>
+            <!-- Statut de la réservation -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Statut de la réservation</mat-label>
+                <mat-select formControlName="statutReservation">
+                <mat-option value="En attente">En attente</mat-option>
+                <mat-option value="Confirmée">Confirmée</mat-option>
+                <mat-option value="Annulée">Annulée</mat-option>
+                </mat-select>
+                <mat-error *ngIf="leFormulaire.get('statutReservation')?.hasError('required')">Le statut est requis.</mat-error>
+            </mat-form-field>
 
-            <button type="submit" (click)="createReservation()" [disabled]="leFormulaire.invalid">Ajouter</button>
+            <!-- Bouton d'ajout -->
+            <div class="actions">
+                <button mat-raised-button color="primary" type="submit" (click)="createReservation()" [disabled]="leFormulaire.invalid">Créer la réservation</button>
+            </div>
         </form>
     </section>
 </div>
