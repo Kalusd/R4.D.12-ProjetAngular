@@ -37,7 +37,9 @@
             <!-- Date de sortie -->
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Date de sortie</mat-label>
-                <input matInput type="date" formControlName="dateDeSortie">
+                <input matInput [matDatepicker]="picker" formControlName="dateDeSortie">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
                 <mat-error *ngIf="leFormulaire.get('dateDeSortie')?.hasError('required')">La date de sortie est requise.</mat-error>
             </mat-form-field>
 
