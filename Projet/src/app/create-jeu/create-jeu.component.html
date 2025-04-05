@@ -2,108 +2,73 @@
     <section class="subForm saisieForm">
         <h2>Nouveau Jeu</h2>
         <form [formGroup]="leFormulaire">
-            <div class="form-group">
-                <label for="titre">Titre du jeu</label>
-                <div class="input">
-                    <input type="text" class="form-control" id="titre" formControlName="titre">
-                    <div *ngIf="leFormulaire.get('titre')?.invalid && leFormulaire.get('titre')?.errors && (leFormulaire.get('titre')?.dirty || leFormulaire.get('titre')?.touched)" class="alert alert-danger">
-                        <small class="text-danger" *ngIf="leFormulaire.get('titre')?.hasError?.('required')">Le titre est requis.</small>
-                        <small class="text-danger" *ngIf="leFormulaire.get('titre')?.hasError?.('minlength')">Ce champ doit comporter au moins 6 caractères.</small>
-                    </div>
-                </div>
-            </div>
+            <!-- Titre -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Titre du jeu</mat-label>
+                <input matInput formControlName="titre" placeholder="Exemple : The Legend of Zelda">
+                <mat-error *ngIf="leFormulaire.get('titre')?.hasError('required')">Le titre est requis.</mat-error>
+                <mat-error *ngIf="leFormulaire.get('titre')?.hasError('minlength')">Le titre doit comporter au moins 6 caractères.</mat-error>
+            </mat-form-field>
 
-            <div class="form-group">
-                <label for="plateforme">Plateformes du jeu [PC; PS4; Xbox One; Switch...]</label>
-                <div class="input">
-                    <input type="text" class="form-control" id="plateforme" formControlName="plateforme">
-                    <div *ngIf="leFormulaire.get('plateforme')?.invalid && leFormulaire.get('plateforme')?.errors && (leFormulaire.get('plateforme')?.dirty || leFormulaire.get('plateforme')?.touched)" class="alert alert-danger">
-                        <small class="text-danger" *ngIf="leFormulaire.get('plateforme')?.hasError?.('required')">Les plateformes sont requises.</small>
-                        <small class="text-danger" *ngIf="leFormulaire.get('plateforme')?.hasError?.('pattern')">Ce champ doit être une liste de plateformes séparées par des points-virgules ';'.</small>
-                    </div>
-                </div>
-            </div>
+            <!-- Plateformes -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Plateformes</mat-label>
+                <input matInput formControlName="plateforme" placeholder="Exemple : PC; PS4; Xbox One">
+                <mat-error *ngIf="leFormulaire.get('plateforme')?.hasError('required')">Les plateformes sont requises.</mat-error>
+                <mat-error *ngIf="leFormulaire.get('plateforme')?.hasError('pattern')">Les plateformes doivent être séparées par des points-virgules (;).</mat-error>
+            </mat-form-field>
 
-            <div class="form-group">
-                <label for="genre">Genre du jeu (Action, Survival...)</label>
-                <div class="input">
-                    <input type="text" class="form-control" id="genre" formControlName="genre">
-                    <div *ngIf="leFormulaire.get('genre')?.invalid && leFormulaire.get('genre')?.errors && (leFormulaire.get('genre')?.dirty || leFormulaire.get('genre')?.touched)" class="alert alert-danger">
-                        <small class="text-danger" *ngIf="leFormulaire.get('genre')?.hasError?.('required')">Le genre est requis.</small>
-                        <small class="text-danger" *ngIf="leFormulaire.get('genre')?.hasError?.('minlength')">Ce champ doit comporter au moins 6 caractères.</small>
-                    </div>
-                </div>
-            </div>
+            <!-- Genre -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Genre</mat-label>
+                <input matInput formControlName="genre" placeholder="Exemple : Action, RPG">
+                <mat-error *ngIf="leFormulaire.get('genre')?.hasError('required')">Le genre est requis.</mat-error>
+                <mat-error *ngIf="leFormulaire.get('genre')?.hasError('minlength')">Le genre doit comporter au moins 6 caractères.</mat-error>
+            </mat-form-field>
 
-            <div class="form-group">
-                <label for="developpeur">Développeur du jeu</label>
-                <div class="input">
-                    <input type="text" class="form-control" id="developpeur" formControlName="developpeur">
-                    <div *ngIf="leFormulaire.get('developpeur')?.invalid && leFormulaire.get('developpeur')?.errors && (leFormulaire.get('developpeur')?.dirty || leFormulaire.get('developpeur')?.touched)" class="alert alert-danger">
-                        <small class="text-danger" *ngIf="leFormulaire.get('developpeur')?.hasError?.('required')">Le développeur est requis.</small>
-                        <small class="text-danger" *ngIf="leFormulaire.get('developpeur')?.hasError?.('minlength')">Ce champ doit comporter au moins 6 caractères.</small>
-                    </div>
-                </div>
-            </div>
+            <!-- Développeur -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Développeur</mat-label>
+                <input matInput formControlName="developpeur" placeholder="Exemple : Nintendo">
+                <mat-error *ngIf="leFormulaire.get('developpeur')?.hasError('required')">Le développeur est requis.</mat-error>
+                <mat-error *ngIf="leFormulaire.get('developpeur')?.hasError('minlength')">Le développeur doit comporter au moins 6 caractères.</mat-error>
+            </mat-form-field>
 
-            <div class="form-group">
-                <label for="dateDeSortie">Date de sortie du jeu</label>
-                <div class="input">
-                    <input type="date" class="form-control" id="dateDeSortie" formControlName="dateDeSortie">
-                    <div *ngIf="leFormulaire.get('dateDeSortie')?.invalid && leFormulaire.get('dateDeSortie')?.errors && (leFormulaire.get('dateDeSortie')?.dirty || leFormulaire.get('dateDeSortie')?.touched)" class="alert alert-danger">
-                        <small class="text-danger" *ngIf="leFormulaire.get('dateDeSortie')?.hasError?.('required')">La date de sortie est requise.</small>
-                    </div>
-                </div>
-            </div>
+            <!-- Date de sortie -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Date de sortie</mat-label>
+                <input matInput type="date" formControlName="dateDeSortie">
+                <mat-error *ngIf="leFormulaire.get('dateDeSortie')?.hasError('required')">La date de sortie est requise.</mat-error>
+            </mat-form-field>
 
-            <div class="form-group">
-                <label for="stockDisponible">Nombre d'exemplaires du jeu disponibles en stock</label>
-                <div class="input">
-                    <input type="number" class="form-control" id="stockDisponible" formControlName="stockDisponible">
-                    <div *ngIf="leFormulaire.get('stockDisponible')?.invalid && leFormulaire.get('stockDisponible')?.errors && (leFormulaire.get('stockDisponible')?.dirty || leFormulaire.get('stockDisponible')?.touched)" class="alert alert-danger">
-                        <small class="text-danger" *ngIf="leFormulaire.get('stockDisponible')?.hasError?.('required')">Le nombre d'exemplaires en stock est requis.</small>
-                        <small class="text-danger" *ngIf="leFormulaire.get('stockDisponible')?.hasError?.('min')">Ce champ doit être positif.</small>
-                    </div>
-                </div>
-            </div>
+            <!-- Stock disponible -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Stock disponible</mat-label>
+                <input matInput type="number" formControlName="stockDisponible" placeholder="Exemple : 100">
+                <mat-error *ngIf="leFormulaire.get('stockDisponible')?.hasError('required')">Le stock est requis.</mat-error>
+                <mat-error *ngIf="leFormulaire.get('stockDisponible')?.hasError('min')">Le stock doit être un nombre positif.</mat-error>
+            </mat-form-field>
 
-            <div class="form-group">
-                <label for="prix">Prix du jeu</label>
-                <div class="input">
-                    <input type="number" class="form-control" id="prix" formControlName="prix">
-                    <div *ngIf="leFormulaire.get('prix')?.invalid && leFormulaire.get('prix')?.errors && (leFormulaire.get('prix')?.dirty || leFormulaire.get('prix')?.touched)" class="alert alert-danger">
-                        <small class="text-danger" *ngIf="leFormulaire.get('prix')?.hasError?.('required')">Le prix est requis.</small>
-                        <small class="text-danger" *ngIf="leFormulaire.get('prix')?.hasError?.('min')">Ce champ doit être positif.</small>
-                    </div>
-                </div>
-            </div>
+            <!-- Prix -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Prix</mat-label>
+                <input matInput type="number" formControlName="prix" placeholder="Exemple : 59.99">
+                <mat-error *ngIf="leFormulaire.get('prix')?.hasError('required')">Le prix est requis.</mat-error>
+                <mat-error *ngIf="leFormulaire.get('prix')?.hasError('min')">Le prix doit être un nombre positif.</mat-error>
+            </mat-form-field>
 
-            <div class="form-group">
-                <label for="cheminImage">Image du jeu</label>
-                <div class="input">
-                    <input type="url" class="form-control" id="cheminImage" formControlName="cheminImage">
-                    <div *ngIf="leFormulaire.get('cheminImage')?.invalid && leFormulaire.get('cheminImage')?.errors && (leFormulaire.get('cheminImage')?.dirty || leFormulaire.get('cheminImage')?.touched)" class="alert alert-danger">
-                        <small class="text-danger" *ngIf="leFormulaire.get('cheminImage')?.hasError?.('required')">Le titre est requis.</small>
-                        <small class="text-danger" *ngIf="leFormulaire.get('cheminImage')?.hasError?.('pattern')">Ce champ doit contenir un url d'une image (formats autorisés : png/jpg/jpeg/gif/svg/webp) (ex: https://.../.../img.png)</small>
-                    </div>
-                </div>
-            </div>
+            <!-- Chemin de l'image -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>URL de l'image</mat-label>
+                <input matInput type="url" formControlName="cheminImage" placeholder="Exemple : https://example.com/image.jpg">
+                <mat-error *ngIf="leFormulaire.get('cheminImage')?.hasError('required')">L'URL de l'image est requise.</mat-error>
+                <mat-error *ngIf="leFormulaire.get('cheminImage')?.hasError('pattern')">L'URL doit être valide et pointer vers une image.</mat-error>
+            </mat-form-field>
 
-            <button type="submit" (click)="createJeu()" [disabled]="leFormulaire.invalid">Ajouter</button>
+            <!-- Bouton d'ajout -->
+            <div class="actions">
+                <button mat-raised-button color="primary" type="submit" (click)="createJeu()" [disabled]="leFormulaire.invalid">Créer le jeu</button>
+              </div>
         </form>
-    </section>
-    <section class="subForm visuForm">
-        <h2>Aperçu du jeu</h2>
-        <div *ngIf="jeuActuel !== undefined">
-            <h3><strong>Titre : </strong>{{jeuActuel.titre}}</h3>
-            <p><strong>Plateforme : </strong> {{jeuActuel.plateforme}}</p>
-            <p><strong>Genre : </strong> {{jeuActuel.genre}}</p>
-            <p><strong>Développeur : </strong> {{jeuActuel.developpeur}}</p>
-            <p><strong>Date de sortie : </strong> {{jeuActuel.dateDeSortie | date}}</p>
-            <p><strong>Stock disponible : </strong> {{jeuActuel.stockDisponible}}</p>
-            <p><strong>Prix : </strong> {{jeuActuel.prix | currency:'EUR':true}}</p>
-            <p><strong>Image : </strong></p>
-            <img *ngIf="jeuActuel.cheminImage" [src]="jeuActuel.cheminImage" alt="Image du jeu" class="imageJeu">
-        </div>
     </section>
 </div>
