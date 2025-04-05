@@ -6,6 +6,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { JeuComponent } from './jeu/jeu.component';
@@ -33,7 +37,11 @@ import { CreateReservationComponent } from './create-reservation/create-reservat
     FormsModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    MatInputModule,
+    
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
