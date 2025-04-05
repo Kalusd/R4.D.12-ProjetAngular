@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ReservationComponent implements OnInit{
   @Input() Reservation!: Reservation;
+  @Input() afficherBoutonRetour: boolean = true;
   laReservation!: Reservation;
   idReservation!: string;
 

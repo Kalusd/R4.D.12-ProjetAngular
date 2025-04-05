@@ -1,0 +1,26 @@
+.actions {
+    margin-bottom: 20px;
+  }
+  
+  .details-jeu {
+    margin-bottom: 30px;
+    max-width: 90%;
+    margin: auto;
+
+    img {
+        max-width: 50%;
+        height: auto;
+        border-radius: 8px;
+        margin: 20px 0;
+    }
+  }
+  
+  .reservations {
+    margin-top: 20px;
+  
+    .liste-reservation {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+  }

@@ -1,43 +1,36 @@
 <div *ngIf="leJeu">
     <!-- Si un identifiant est donné dans l'url (= on est sur la page du jeu) -->
     <div *ngIf="idJeu !== undefined">
-        <a routerLink="/catalogue-jeux" class="button"><button>Retour au catalogue de jeux</button></a>
-        <h3>{{leJeu.titre | uppercase}}</h3>
-        <img [src]="leJeu.cheminImage ? leJeu.cheminImage : 'https://placehold.co/512x512?text=' + leJeu.titre" [alt]="'Illustration ' + leJeu.titre">
-        <p>Sortie le : {{leJeu.dateDeSortie | date: 'dd/MM/yyyy'}}</p>
-        <p>Developpeur : {{leJeu.developpeur}}</p>
-        <p>Prix : {{leJeu.prix | currency: 'EUR'}}</p>
-        <p>
-            <span> Quantité : {{leJeu.stockDisponible}} </span>
-        </p>
-        <div *ngIf="idJeu !== undefined">
-            <h3>Réservations</h3>
-            <div *ngIf="lesReservations && lesReservations.length > 0">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID Réservation</th>
-                            <th>Client</th>
-                            <th>Plateforme</th>
-                            <th>Date</th>
-                            <th>Statut</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let reservation of lesReservations">
-                            <td><a routerLink="/reservation/{{reservation.id}}">{{reservation.id}}</a></td>
-                            <td>{{reservation.nomClient}}<br>{{reservation.emailClient}}<br>{{reservation.numeroTelephone}}</td>
-                            <td>{{reservation.plateforme}}</td>
-                            <td>{{reservation.dateDeReservation | date: 'dd/MM/yyyy'}}</td>
-                            <td>{{reservation.statutReservation}}</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <!-- Bouton de retour en arrière -->
+        <div class="actions">
+            <button mat-raised-button color="primary" routerLink="/catalogue-jeux"><mat-icon>arrow_back</mat-icon> Retour au catalogue</button>
+        </div>
+        
+        <!-- Détails du jeu -->
+        <mat-card class="details-jeu">
+            <mat-card-header>
+                <mat-card-title>{{ leJeu.titre }}</mat-card-title>
+                <mat-card-subtitle>{{ leJeu.genre }}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image [src]="leJeu.cheminImage || 'https://placehold.co/512x512?text=' + leJeu.titre" [alt]="'Illustration ' + leJeu.titre">
+            <mat-card-content>
+                <p><strong>Développeur :</strong> {{ leJeu.developpeur }}</p>
+                <p><strong>Date de sortie :</strong> {{ leJeu.dateDeSortie | date: 'dd/MM/yyyy' }}</p>
+                <p><strong>Plateformes :</strong> {{ leJeu.plateforme }}</p>
+                <p><strong>Prix :</strong> {{ leJeu.prix | currency: 'EUR' }}</p>
+                <p><strong>Stock disponible :</strong> {{ leJeu.stockDisponible }}</p>
+            </mat-card-content>
+        </mat-card>
+
+        <!-- Réservations du jeu -->
+        <div class="reservations">
+            <h2>Réservations pour ce jeu</h2>
+            <div *ngIf="lesReservations && lesReservations.length > 0" class="liste-reservation">
+                <app-reservation *ngFor="let reservation of lesReservations" [Reservation]="reservation" [afficherBoutonRetour]="false" class="carte-reservation"></app-reservation>
             </div>
+            <div *ngIf="!lesReservations || lesReservations.length === 0">Aucune réservation trouvée pour ce jeu.</div>
         </div>
     </div>
-
-    
 
     <!-- Si aucun identifiant n'est donné dans l'url (= on est sur la page du catalogue) -->
     <div *ngIf="idJeu === undefined">

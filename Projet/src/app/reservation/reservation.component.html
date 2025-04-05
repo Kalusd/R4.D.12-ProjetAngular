@@ -1,7 +1,10 @@
 <div *ngIf="laReservation">
     <!-- Si un identifiant est donné dans l'url (= on est sur la page de la reservation) -->
     <div *ngIf="idReservation !== undefined">
-        <a routerLink="/catalogue-reservations" class="button"><button>Retour au catalogue de réservations</button></a>
+        <div *ngIf="afficherBoutonRetour">
+            <button mat-raised-button routerLink="/catalogue-reservations" color="primary"><mat-icon>arrow_back</mat-icon> Retour au catalogue</button>
+        </div>
+
         <h3>Réservation n°{{laReservation.id}}</h3>
         <p>Client : {{laReservation.nomClient}}</p>
         <p>Email client : {{laReservation.emailClient}}</p>
