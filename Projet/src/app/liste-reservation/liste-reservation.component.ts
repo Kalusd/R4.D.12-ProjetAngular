@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Reservation } from '../models/reservation.model';
 import { ReservationsService } from '../services/reservations.service';
+import { JeuxService } from '../services/jeux.service';
+import { Jeu } from '../models/jeu.model';
 
 @Component({
   selector: 'app-liste-reservation',
@@ -12,15 +14,21 @@ export class ListeReservationComponent implements OnInit {
   
     listeReservation! : Reservation[];
     listeReservationFiltree! : Reservation[];
+    listeJeux! : Jeu[];
     termeRecherche: string = '';
     filtreStatut: string = '';
+    filtreJeu: string = '';
   
-    constructor(private monServiceReservations: ReservationsService) {}
+    constructor(private monServiceReservations: ReservationsService, private monServiceJeux: JeuxService) {}
   
     ngOnInit(): void {
       this.monServiceReservations.getReservations().subscribe((reservations) => {
         this.listeReservation = reservations;
         this.listeReservationFiltree = reservations;
+      });
+
+      this.monServiceJeux.getJeux().subscribe((jeux) => {
+        this.listeJeux = jeux;
       });
     }
 
@@ -35,7 +43,11 @@ export class ListeReservationComponent implements OnInit {
           ? reservation.statutReservation === this.filtreStatut
           : true;
 
-        return resultatsRecherche && resultatsFiltrageStatut;
+        const resultatsFiltrageJeux = this.filtreJeu
+          ? reservation.titreJeuReservation === this.filtreJeu
+          : true;
+
+        return resultatsRecherche && resultatsFiltrageStatut && resultatsFiltrageJeux;
       });
     }
 

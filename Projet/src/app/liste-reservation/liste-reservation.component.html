@@ -9,7 +9,7 @@
     <!-- Barre de recherche -->
     <mat-form-field appearance="fill" class="full-width">
         <mat-label>Rechercher une réservation</mat-label>
-        <input matInput [(ngModel)]="termeRecherche" (ngModelChange)="appliquerFiltrage()" placeholder="Rechercher par nom ou email" >
+        <input matInput [(ngModel)]="termeRecherche" (ngModelChange)="appliquerFiltrage()" placeholder="Rechercher par nom ou email du client" >
     </mat-form-field>
 
     <!-- Filtrage par statut -->
@@ -20,6 +20,15 @@
             <mat-option value="En attente">En attente</mat-option>
             <mat-option value="Confirmée">Confirmée</mat-option>
             <mat-option value="Annulée">Annulée</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <!-- Filtrage par jeu -->
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Filtrer par jeu</mat-label>
+        <mat-select [(ngModel)]="filtreJeu" (selectionChange)="appliquerFiltrage()">
+            <mat-option value="">Tous les jeux</mat-option>
+            <mat-option *ngFor="let jeu of listeJeux" [value]="jeu.titre">{{jeu.titre}}</mat-option>
         </mat-select>
     </mat-form-field>
 
