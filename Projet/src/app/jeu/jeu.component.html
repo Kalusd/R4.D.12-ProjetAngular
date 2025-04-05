@@ -12,13 +12,21 @@
                 <mat-card-title>{{ leJeu.titre }}</mat-card-title>
                 <mat-card-subtitle>{{ leJeu.genre }}</mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image [src]="leJeu.cheminImage || 'https://placehold.co/512x512?text=' + leJeu.titre" [alt]="'Illustration ' + leJeu.titre">
-            <mat-card-content>
-                <p><strong>Développeur :</strong> {{ leJeu.developpeur }}</p>
-                <p><strong>Date de sortie :</strong> {{ leJeu.dateDeSortie | date: 'dd/MM/yyyy' }}</p>
-                <p><strong>Plateformes :</strong> {{ leJeu.plateforme }}</p>
-                <p><strong>Prix :</strong> {{ leJeu.prix | currency: 'EUR' }}</p>
-                <p><strong>Stock disponible :</strong> {{ leJeu.stockDisponible }}</p>
+            
+            <mat-card-content class="contenu-carte">
+                <!-- Colonne des informations du jeu -->
+                <div class="infos-jeu">
+                    <p><strong>Développeur :</strong> {{ leJeu.developpeur }}</p>
+                    <p><strong>Date de sortie :</strong> {{ leJeu.dateDeSortie | date: 'dd/MM/yyyy' }}</p>
+                    <p><strong>Plateformes :</strong> {{ leJeu.plateforme }}</p>
+                    <p><strong>Prix :</strong> {{ leJeu.prix | currency: 'EUR' }}</p>
+                    <p><strong>Stock disponible :</strong> {{ leJeu.stockDisponible }}</p>
+                </div>
+
+                <!-- Colonne de l'image -->
+                <div class="image-jeu">
+                    <img [src]="leJeu.cheminImage || 'https://placehold.co/512x512?text=' + leJeu.titre" [alt]="'Illustration ' + leJeu.titre">
+                </div>
             </mat-card-content>
         </mat-card>
 
