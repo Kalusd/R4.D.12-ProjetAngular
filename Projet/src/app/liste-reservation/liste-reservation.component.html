@@ -1,4 +1,4 @@
-<div class="liste-reservation">
+<div class="catalogue-reservations">
     <h2>Liste des réservations</h2>
 
     <!-- Nombre de résultats -->
@@ -7,24 +7,26 @@
     </div>
 
     <!-- Barre de recherche -->
-    <div class="from-group">
-        <label for="recherche">Rechercher une réservation par nom ou email</label>
-        <input type="text" id="recherche" class="form-control" [(ngModel)]="termeRecherche" (ngModelChange)="appliquerFiltrage()" placeholder="Rechercher par nom ou email" >
-    </div>
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Rechercher une réservation</mat-label>
+        <input matInput [(ngModel)]="termeRecherche" (ngModelChange)="appliquerFiltrage()" placeholder="Rechercher par nom ou email" >
+    </mat-form-field>
 
     <!-- Filtrage par statut -->
-    <div class="form-group">
-        <label for="filtre">Filtrer par statut</label>
-        <select id="filtre" class="form-control" [(ngModel)]="filtreStatut" (ngModelChange)="appliquerFiltrage()">
-            <option value="">Tous les statuts</option>
-            <option value="En attente">En attente</option>
-            <option value="Confirmée">Confirmée</option>
-            <option value="Annulée">Annulée</option>
-        </select>
-    </div>
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Filtrer par statut</mat-label>
+        <mat-select [(ngModel)]="filtreStatut" (selectionChange)="appliquerFiltrage()">
+            <mat-option value="">Tous les statuts</mat-option>
+            <mat-option value="En attente">En attente</mat-option>
+            <mat-option value="Confirmée">Confirmée</mat-option>
+            <mat-option value="Annulée">Annulée</mat-option>
+        </mat-select>
+    </mat-form-field>
 
     <!-- Bouton de création d'une réservation -->
-    <a routerLink="/create-reservation" class="button"><button>Créer une réservation</button></a>
+    <div class="actions">
+        <button mat-raised-button color="primary" routerLink="/create-reservation"><mat-icon>add</mat-icon>Ajouter une réservation</button>
+    </div>
 
     <!-- Message si aucun résultat n'est trouvé -->
     <div *ngIf="listeReservationFiltree.length === 0" class="alert alert-warning">
@@ -32,7 +34,9 @@
     </div>
 
     <!-- Liste des réservations -->
-    <ng-container *ngFor="let uneReservation of listeReservationFiltree">
-        <app-reservation [Reservation]="uneReservation"></app-reservation>
-    </ng-container>
+    <div *ngIf="listeReservationFiltree.length > 0">
+        <ng-container *ngFor="let uneReservation of listeReservationFiltree">
+            <app-reservation  [Reservation]="uneReservation"></app-reservation>
+        </ng-container>
+    </div>
 </div>
