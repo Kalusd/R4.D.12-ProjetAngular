@@ -42,7 +42,7 @@
 
     <!-- Liste des jeux -->
     <div class="liste-jeux" *ngIf="listeJeuFiltree.length > 0">
-        <mat-card *ngFor="let unJeu of listeJeuFiltree" class="carte-jeu">
+        <mat-card *ngFor="let unJeu of listeJeuFiltree">
             <mat-card-header>
                 <mat-card-title>{{ unJeu.titre }}</mat-card-title>
                 <mat-card-subtitle>{{ unJeu.genre }}</mat-card-subtitle>
