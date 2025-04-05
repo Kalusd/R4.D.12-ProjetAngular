@@ -1,47 +1,60 @@
-<div class="jeu-card" *ngIf="leJeu">
-    <!-- Si un identifiant est donné dans l'url (= on est sur la page du jeu) -->
-    <p *ngIf="idJeu !== undefined">
-        <a routerLink="/catalogue-jeux" class="button"><button>Retour au catalogue de jeux</button></a>
-    </p>
-
-    <h3>{{leJeu.titre | uppercase}}</h3>
-    <img [src]="leJeu.cheminImage ? leJeu.cheminImage : 'https://placehold.co/512x512?text=' + leJeu.titre" [alt]="'Illustration ' + leJeu.titre">
-    <p>Sortie le : {{leJeu.dateDeSortie | date: 'dd/MM/yyyy'}}</p>
-    <p>Developpeur : {{leJeu.developpeur}}</p>
-    <p>Prix : {{leJeu.prix | currency: 'EUR'}}</p>
-    <p>
-        <span> Quantité : {{leJeu.stockDisponible}} </span>
-    </p>
-
-    <!-- Si aucun identifiant n'est donné dans l'url (= on est sur la page du catalogue) -->
-    <p *ngIf="idJeu === undefined">
-        <a routerLink="/jeu/{{leJeu.id}}" class="button"><button>Voir le détail</button></a>
-    </p>
-
+<div *ngIf="leJeu">
     <!-- Si un identifiant est donné dans l'url (= on est sur la page du jeu) -->
     <div *ngIf="idJeu !== undefined">
-        <h3>Réservations</h3>
-        <div *ngIf="lesReservations && lesReservations.length > 0">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID Réservation</th>
-                        <th>Client</th>
-                        <th>Plateforme</th>
-                        <th>Date</th>
-                        <th>Statut</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let reservation of lesReservations">
-                        <td><a routerLink="/reservation/{{reservation.id}}">{{reservation.id}}</a></td>
-                        <td>{{reservation.nomClient}}<br>{{reservation.emailClient}}<br>{{reservation.numeroTelephone}}</td>
-                        <td>{{reservation.plateforme}}</td>
-                        <td>{{reservation.dateDeReservation | date: 'dd/MM/yyyy'}}</td>
-                        <td>{{reservation.statutReservation}}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <a routerLink="/catalogue-jeux" class="button"><button>Retour au catalogue de jeux</button></a>
+        <h3>{{leJeu.titre | uppercase}}</h3>
+        <img [src]="leJeu.cheminImage ? leJeu.cheminImage : 'https://placehold.co/512x512?text=' + leJeu.titre" [alt]="'Illustration ' + leJeu.titre">
+        <p>Sortie le : {{leJeu.dateDeSortie | date: 'dd/MM/yyyy'}}</p>
+        <p>Developpeur : {{leJeu.developpeur}}</p>
+        <p>Prix : {{leJeu.prix | currency: 'EUR'}}</p>
+        <p>
+            <span> Quantité : {{leJeu.stockDisponible}} </span>
+        </p>
+        <div *ngIf="idJeu !== undefined">
+            <h3>Réservations</h3>
+            <div *ngIf="lesReservations && lesReservations.length > 0">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Réservation</th>
+                            <th>Client</th>
+                            <th>Plateforme</th>
+                            <th>Date</th>
+                            <th>Statut</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let reservation of lesReservations">
+                            <td><a routerLink="/reservation/{{reservation.id}}">{{reservation.id}}</a></td>
+                            <td>{{reservation.nomClient}}<br>{{reservation.emailClient}}<br>{{reservation.numeroTelephone}}</td>
+                            <td>{{reservation.plateforme}}</td>
+                            <td>{{reservation.dateDeReservation | date: 'dd/MM/yyyy'}}</td>
+                            <td>{{reservation.statutReservation}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+    </div>
+
+    
+
+    <!-- Si aucun identifiant n'est donné dans l'url (= on est sur la page du catalogue) -->
+    <div *ngIf="idJeu === undefined">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{ Jeu.titre }}</mat-card-title>
+                <mat-card-subtitle>{{ Jeu.genre }}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image [src]="Jeu.cheminImage || 'https://placehold.co/300x200?text=Image+non+disponible'" [alt]="Jeu.titre">
+            <mat-card-content>
+                <p><strong>Plateformes : </strong> {{ Jeu.plateforme }}</p>
+                <p><strong>Prix : </strong> {{ Jeu.prix | currency:'EUR' }}</p>
+                <p><strong>Stock : </strong> {{ Jeu.stockDisponible }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button color="primary" routerLink="/jeu/{{Jeu.id}}">Détails du jeu <mat-icon>keyboard_arrow_right</mat-icon></button>
+            </mat-card-actions>
+        </mat-card>
     </div>
 </div>
